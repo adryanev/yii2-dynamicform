@@ -5,7 +5,7 @@
  * @license   https://github.com/bajadev/yii2-dynamicform/blob/master/LICENSE
  */
 
-namespace kidzen\dynamicform;
+namespace adryanev\dynamicform;
 
 use Symfony\Component\CssSelector\CssSelectorConverter;
 use Yii;
@@ -217,7 +217,7 @@ class DynamicFormWidget extends \yii\base\Widget
         $js .= "});\n";
         $view->registerJs($js, $view::POS_READY);
 
-        $js = 'jQuery("#' . $this->formId . '").yiiDynamicForm(' . $this->_hashVar .');' . "\n";
+        $js = 'jQuery("#' . $this->formId . '").on(\'afterInit\', function () {jQuery("#' . $this->formId . '").yiiDynamicForm(' . $this->_hashVar .');});' . "\n";
         $view->registerJs($js, $view::POS_LOAD);
         // skip attribute validation if input not exist in yiiActiveForm.beforeValidateAttribute event
         if (isset($this->_options['min']) && $this->_options['min'] === 0){
