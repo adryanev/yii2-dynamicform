@@ -24,3 +24,4 @@ composer.phar
 # mac deployment helpers
 switch
 index
+composer.lock
